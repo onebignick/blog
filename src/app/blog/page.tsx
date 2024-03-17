@@ -18,7 +18,7 @@ export default function Blog() {
         <section className='p-4'>
           <h1 className='font-extrabold text-3xl mb-1'>Hey</h1>
           <p>
-            welcome to my blog. It's great that you are reading this.
+            welcome to my blog. It&apos;s great that you are reading this.
             This site was created to pen down my successes and failures, and most importantly, to document down my experiences.
             While some articles may be pretty crass and rough, I hope that you will have a great time reading it. (and hopefully learn something too!)
           </p>
