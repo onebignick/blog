@@ -1,51 +1,23 @@
-import Date from '@/components/date';
-import Navbar from '@/components/navbar';
-import { getPostData } from '@/lib/posts'
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 type Params = {
-  id: string
+    id: string
 }
 
 type Props = {
-  params: Params
+    params: Params
 }
 
-type PostData = {
-  title: string
-  date: string
-  contentHtml: string
-}
+export default async function Post ({params}: Props) {
+    const BlogPost = dynamic(() => import(`../../articles/${params.id}.mdx`), {
+        loading: () => <p>Loading ...</p>,
+    });
 
-export async function generateMetadata({ params }: Props) {
-  const postData: PostData = await getPostData(params.id)
-
-  return {
-    title: postData.title,
-  }
-}
-
-export default async function Post({ params }: Props) {
-  const postData: PostData = await getPostData(params.id)
-
-  return (
-    <>
-      <Navbar currentPage={"Blog"}/>
-      <section className='p-4'>
-      <Link href='/blog'>Back</Link>
-      <br/>
-      <br/>
-      <h1 className='font-extrabold text-3xl mb-1'>{postData.title}</h1>
-
-      <div className='text-white-500 font-medium mb-5'>
-        <Date dateString={postData.date} />
-      </div>
-
-      <div
-        className='text-white-600'
-        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-      />
-      </section>
-    </>
-  )
+    return (
+        <main className="min-h-screen bg-zinc-50 p-24 dark:bg-zinc-950">
+            <Link href='../blog'>Back</Link>
+            <BlogPost/>
+        </main>
+    )
 }
