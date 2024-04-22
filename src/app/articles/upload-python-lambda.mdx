@@ -1,0 +1,31 @@
+---
+title: "Deploying Python Script on AWS Lambda"
+id: upload-python-lambda
+date: 2023-07-23
+---
+
+# Deploying Python Script on AWS Lambda
+
+**Disclaimer: Python 3.10 was used in this guide**
+
+Having trouble deploying your Python scripts onto AWS Lambda? This guide covers how to do it via the following methods:
+1. ZIP File
+2. Docker Image
+
+# Prerequisites
+
+Before starting, ensure that you have the following installed
+
+1. Python
+2. Docker
+3. An AWS account
+
+
+
+# Gathering our dependencies
+
+First we will need to create a `requirements.txt` file to track the dependencies and the versions that we have used.
+
+```shell
+pip freeze > requirements.txt
+```

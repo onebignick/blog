@@ -1,15 +1,9 @@
-import Navbar from "@/components/navbar";
+import HomePage from '../pages/homePage.mdx';
 
 export default function Home() {
   return (
-    <main>
-      <Navbar currentPage={"Home"}/>
-      <section className="p-4">
-        <h1 className="font-extrabold text-3xl mb-1">Welcome to my website</h1>
-        <p>
-          My name is Nicholas and I&apos;m a first year student studying at the Singapore Management University.
-        </p>
-      </section>
+    <main className="min-h-screen bg-zinc-50 p-24 dark:bg-zinc-950">
+      <HomePage/>      
     </main>
   );
 }
