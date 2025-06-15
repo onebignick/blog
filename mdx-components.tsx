@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import type { MDXComponents } from 'mdx/types';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -6,7 +7,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         h2: (props) => <h2 {...props} className="invisible"/>,
         p: (props) => <p {...props} className="mb-4" />,
         pre: (props) => (
-            <pre {...props} className="rounded-lg border-2 border-zinc-500 p-4" />    
+            <pre {...props} className="rounded-lg border-2 border-zinc-500 p-4 mb-4" />    
+        ),
+        a: (props) => (
+            <a {...props} className="hover:underline"/>
         ),
         ...components 
     };

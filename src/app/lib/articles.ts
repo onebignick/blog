@@ -16,7 +16,7 @@ export function getSortedArticleData() {
         
         return {
             id,
-            ...(matterResult.data as { date: string; title: string }),
+            ...(matterResult.data as { date: Date; title: string }),
         }
     })
     console.log(allArticleData)
@@ -27,6 +27,17 @@ export function getSortedArticleData() {
             return -1;
         }
     });
+}
+
+export function getArticleDataById(id: string) {
+    const fullPath = path.join(articleDirectory, id + ".mdx");
+    const fileContents = fs.readFileSync(fullPath, fileSyncEncoding);
+    const matterResult = matter(fileContents)
+
+    return {
+        id,
+        ...(matterResult.data as { date: Date; title: string }),
+    }
 }
 
 export function getAllArticleIds() {
