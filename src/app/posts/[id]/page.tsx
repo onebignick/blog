@@ -19,10 +19,10 @@ export default async function Post ({params}: Props) {
     });
 
     return (
-        <main className="min-h-screen bg-zinc-50 p-24 dark:bg-zinc-950">
+        <main className="min-h-screen py-12 md:py-24 px-4 mx-auto max-w-[800px]">
             <Link href='../blog'>Back</Link>
             <div className="flex justify-between items-end">
-                <h1 className="text-3xl">{title}</h1>
+                <h1 className="text-xl md:text-3xl">{title}</h1>
                 <p className="min-w-[100px]">
                     {date.toLocaleDateString("en-GB", {
                         day: 'numeric', month: 'short', year: 'numeric'

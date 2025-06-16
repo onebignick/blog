@@ -26,7 +26,7 @@ export default function Blog () {
 
 
     return (
-        <main className="min-h-screen bg-zinc-50 p-24 dark:bg-zinc-950">
+        <main className="min-h-screen py-12 md:py-24 px-4 mx-auto max-w-[800px]">
             <BlogPage/>
             <section>
                 <ul>

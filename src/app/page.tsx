@@ -2,8 +2,8 @@ import HomePage from '../pages/homePage.mdx';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-zinc-50 p-24 dark:bg-zinc-950">
-      <HomePage/>      
+    <main className="min-h-screen py-12 md:py-24 px-4 mx-auto max-w-[800px]">
+      <HomePage/>
     </main>
   );
 }
