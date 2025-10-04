@@ -31,7 +31,7 @@ export default function Blog () {
     );
 
     return (
-        <main className="min-h-screen py-8 px-4 mx-auto max-w-[800px]">
+        <main className="py-8 px-4 mx-auto max-w-[800px]">
             <BlogPage/>
             <div className="relative mb-6">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-zinc-400" />

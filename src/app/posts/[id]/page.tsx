@@ -19,7 +19,7 @@ export default async function Post ({params}: Props) {
     const {title, date, content} = getArticleDataById(params.id);
 
     return (
-        <main className="min-h-screen py-8 px-4 mx-auto max-w-[800px]">
+        <main className="py-8 px-4 mx-auto max-w-[800px]">
             <Link href='../blog' className="underline hover:opacity-60">Back</Link>
             <div className="flex justify-between items-end mt-6">
                 <h1 className="text-xl md:text-3xl">{title}</h1>
