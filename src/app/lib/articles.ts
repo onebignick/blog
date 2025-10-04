@@ -21,21 +21,18 @@ export function getSortedArticleData() {
     })
     console.log(allArticleData)
     return allArticleData.sort((a, b) => {
-        if (a.date < b.date) {
-            return 1;
-        } else {
-            return -1;
-        }
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 }
 
 export function getArticleDataById(id: string) {
-    const fullPath = path.join(articleDirectory, id + ".mdx");
+    const fullPath = path.join(articleDirectory, id + ".md");
     const fileContents = fs.readFileSync(fullPath, fileSyncEncoding);
     const matterResult = matter(fileContents)
 
     return {
         id,
+        content: matterResult.content,
         ...(matterResult.data as { date: Date; title: string }),
     }
 }

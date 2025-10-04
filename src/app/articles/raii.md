@@ -5,7 +5,7 @@ date: 2025-06-21
 ---
 
 Resource Acquisition is Initialization (RAII) is a pattern in c++ to ensure that resources are properly cleaned up when they go out of scope. Before we do a deep dive on the RAII pattern, we first need to learn about resources and ownership
-### What is a resource
+## What is a resource
 A resource in C++ is some facility or concept that you gain access to by a statement or expression, and you **can** release or dispose of that facility or concept by some other statement or expression. You can think of it like a mutex, I gain access to the mutex by locking it, that mutex is said to be a resource that i own.
 
 ```cpp
@@ -15,11 +15,11 @@ void example(pthread_mutex_t& mtx) {
 }
 ```
 
-### What is ownership
+## What is ownership
 Simply put, ownership is when you assume the responsibility of initializing and disposing of resources. For example, when you lock a mutex, you must remember to unlock it.
-### Common problems
+## Common problems
 Some common problems that the RAII pattern solves are:
-#### Leak
+### Leak
 ```cpp
 void example() {
 	T obj = new T{}; // i "acquire" some memory
@@ -28,7 +28,7 @@ void example() {
 ```
 A leak happens when a resource is acquired but never released.
 
-#### Use After Free
+### Use After Free
 ```cpp
 void example() {
 	T obj = new T{};
@@ -38,7 +38,7 @@ void example() {
 ```
 Undefined behavior happens when an object that is allocated on the heap is deleted and then accessed after.
 
-#### Double Free
+### Double Free
 ```cpp
 void example() {
 	T obj = new T{};
@@ -47,7 +47,7 @@ void example() {
 }
 ```
 Undefined behavior also happens when you attempt to free the object twice
-### What is RAII
+## What is RAII
 RAII is a class where resource acquisition is done in the constructor and resource disposal is done in the destructor. An RAII class is said to own the resource. it is responsible for cleaning up that resource at appropriate time
 
 Below are some common resources that must be Acquired and Disposed
@@ -57,7 +57,7 @@ Below are some common resources that must be Acquired and Disposed
 3. Joinable Threads
 4. Mutex
 
-### Creating your own RAII class
+## Creating your own RAII class
 Lets start by creating our own `unique_pointer` class. This function will have **exclusive ownership** over a pointer and will be responsible for acquiring resources and disposing of them after.
 
 ```cpp

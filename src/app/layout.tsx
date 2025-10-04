@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,14 +16,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              const theme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+              document.documentElement.classList.toggle('dark', theme === 'dark');
+            })();
+          `
+        }} />
+      </head>
       <body className={inter.className}>
-        <nav className="flex max-w-[800px] m-auto p-4 sticky top-0 bg-inherit">
+        <nav className="flex justify-between items-center max-w-[800px] m-auto px-4 pt-4 pb-2 sticky top-0 bg-background z-10">
           <div className="flex gap-4 items-end">
-            <a href='/' className="text-2xl hover:underline">nicholas ong</a>
-            <a href='/blog' className="hover:underline">blog</a>
+            <a href='/' className="text-2xl underline hover:opacity-60">nicholas ong</a>
+            <a href='/blog' className="underline hover:opacity-60">blog</a>
           </div>
-
+          <ThemeToggle />
         </nav>
         {children}
       </body>

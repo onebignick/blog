@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             <pre {...props} className="rounded-lg border-2 border-zinc-500 p-4 mb-4 overflow-y-scroll" />    
         ),
         a: (props) => (
-            <a {...props} className="hover:underline"/>
+            <a {...props} className="underline hover:opacity-60"/>
         ),
         ...components 
     };

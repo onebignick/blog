@@ -66,7 +66,7 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require('tailwind-highlightjs'), require("tailwindcss-animate")],
+  plugins: [require('@tailwindcss/typography'), require('tailwind-highlightjs'), require("tailwindcss-animate")],
   safelist: [
     {
       pattern: /hljs+/,
