@@ -1,8 +1,12 @@
 ---
-title: "Copy Constructors in C++"
 id: cpp-copy-constructors
-date: 2025-06-16
+aliases: []
+tags: []
+datePosted: "2025-06-16"
+dateUpdated: "2025-06-16"
 ---
+
+# Copy Constructors in C++
 
 In this post I will explain what copy constructors are in C++ and why they are useful.
 

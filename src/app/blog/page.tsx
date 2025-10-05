@@ -6,9 +6,12 @@ import { useRouter } from "next/navigation"
 import { Search } from "lucide-react"
 
 type ArticleData = {
-    date: Date;
-    title: string
-    id: string
+    datePosted: string;
+    dateUpdated: string;
+    title: string;
+    id: string;
+    aliases: string[];
+    tags: string[];
 }
 
 export default function Blog () {
@@ -45,7 +48,7 @@ export default function Blog () {
             </div>
             <section>
                 <ul>
-                    {filteredArticles.map(({ id, date, title }) => (
+                    {filteredArticles.map(({ id, datePosted, title }) => (
                         <li
                             key={id}
                             className="flex justify-between items-center py-4"
@@ -55,7 +58,7 @@ export default function Blog () {
                                 <p>{title}</p>
                             </div>
                             <p className="min-w-[100px]">
-                                {new Date(date).toLocaleDateString("en-GB", {
+                                {new Date(datePosted).toLocaleDateString("en-GB", {
                                     day: 'numeric', month: 'short', year: 'numeric'
                                 })}
                             </p>

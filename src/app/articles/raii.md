@@ -1,8 +1,12 @@
 ---
-title: "Resource Acquisition is Initialization!"
 id: raii
-date: 2025-06-21
+aliases: []
+tags: []
+datePosted: "2025-06-21"
+dateUpdated: "2025-06-21"
 ---
+
+# Resource Acquisition is Initialization!
 
 Resource Acquisition is Initialization (RAII) is a pattern in c++ to ensure that resources are properly cleaned up when they go out of scope. Before we do a deep dive on the RAII pattern, we first need to learn about resources and ownership
 ## What is a resource

@@ -1,8 +1,12 @@
 ---
-title: "Deploying Python Scripts on AWS Lambda"
 id: upload-python-lambda
-date: 2023-07-23
+aliases: []
+tags: []
+datePosted: "2023-07-23"
+dateUpdated: "2023-07-23"
 ---
+
+# Deploying Python Scripts on AWS Lambda
 
 **Disclaimer: Python 3.10 was used in this guide**
 

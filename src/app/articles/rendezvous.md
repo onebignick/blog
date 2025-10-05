@@ -1,8 +1,12 @@
 ---
-title: "Est-ce que vous voulez rendezvous ce soir?"
 id: rendezvous
-date: 2025-06-23
+aliases: []
+tags: []
+datePosted: "2025-06-23"
+dateUpdated: "2025-06-23"
 ---
+
+# Est-ce que vous voulez rendezvous ce soir?
 
 Recently I started reading the little book of semaphores, a book designed to teach computer science students about concurrency. I'm now writing this to share what I've learnt.
 ### The problem

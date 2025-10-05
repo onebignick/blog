@@ -13,15 +13,20 @@ export function getSortedArticleData() {
         const fullPath = path.join(articleDirectory, filename)
         const fileContents = fs.readFileSync(fullPath, fileSyncEncoding);
         const matterResult = matter(fileContents)
-        
+
+        // Extract H1 title from content
+        const titleMatch = matterResult.content.match(/^#\s+(.+)$/m);
+        const title = titleMatch ? titleMatch[1] : id;
+
         return {
             id,
-            ...(matterResult.data as { date: Date; title: string }),
+            title,
+            ...(matterResult.data as { datePosted: string; dateUpdated: string; aliases: string[]; tags: string[] }),
         }
     })
     console.log(allArticleData)
     return allArticleData.sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
+        return new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime();
     });
 }
 
@@ -30,10 +35,35 @@ export function getArticleDataById(id: string) {
     const fileContents = fs.readFileSync(fullPath, fileSyncEncoding);
     const matterResult = matter(fileContents)
 
+    // Extract H1 title from content
+    const titleMatch = matterResult.content.match(/^#\s+(.+)$/m);
+    const title = titleMatch ? titleMatch[1] : id;
+
+    // Remove H1 title from content to avoid duplication
+    const contentWithoutTitle = matterResult.content.replace(/^#\s+.+$/m, '').trim();
+
+    // Extract all headings (H2, H3, H4) for table of contents
+    const headingRegex = /^(#{2,4})\s+(.+)$/gm;
+    const headings: { id: string; text: string; level: number }[] = [];
+    let match;
+
+    while ((match = headingRegex.exec(contentWithoutTitle)) !== null) {
+        const level = match[1].length;
+        const text = match[2];
+        const id = text
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-');
+
+        headings.push({ id, text, level });
+    }
+
     return {
         id,
-        content: matterResult.content,
-        ...(matterResult.data as { date: Date; title: string }),
+        title,
+        content: contentWithoutTitle,
+        headings,
+        ...(matterResult.data as { datePosted: string; dateUpdated: string; aliases: string[]; tags: string[] }),
     }
 }
 
